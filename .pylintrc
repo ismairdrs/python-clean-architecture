@@ -18,8 +18,8 @@ ignore-patterns=
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
-#init-hook=
-
+init-hook="from pylint.config import find_pylintrc;
+import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
 jobs=1
@@ -403,7 +403,7 @@ const-naming-style=UPPER_CASE
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
-docstring-min-length=-1
+docstring-min-length=0
 
 # Naming style matching correct function names.
 function-naming-style=snake_case
