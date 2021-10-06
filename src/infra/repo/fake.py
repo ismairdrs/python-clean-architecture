@@ -11,7 +11,7 @@ class FakeRepo:
         """teste"""
         with DBConnectionHandler() as db_connection:
             try:
-                new_user = User(name="programador", password="idiota")
+                new_user = User(name=name, password=password)
                 db_connection.session.add(new_user)
                 db_connection.session.commit()
             except:
