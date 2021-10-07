@@ -1,4 +1,3 @@
-# pylint: disable = E1101
 from src.infra.config import DBConnectionHandler
 from src.entities import User
 
