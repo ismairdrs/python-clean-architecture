@@ -120,3 +120,4 @@ uwsgi/*
 database/
 
 *.db
+.pytest_cache
