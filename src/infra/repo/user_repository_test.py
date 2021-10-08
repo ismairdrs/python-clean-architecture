@@ -1,8 +1,8 @@
 from faker import Faker
-
-from .user_repository import UserRepository
 from src.infra.config import DBConnectionHandler
 from src.domain.models import Users as UsersModel
+from .user_repository import UserRepository
+
 
 faker = Faker()
 user_repository = UserRepository()
@@ -10,6 +10,7 @@ db_connection_handler = DBConnectionHandler()
 
 
 def test_insert_user():
+    """Should insert a user in User table and compare it"""
     name = faker.name()
     password = faker.word()
     engine = db_connection_handler.get_engine()
