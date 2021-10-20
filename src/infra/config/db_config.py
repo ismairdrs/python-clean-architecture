@@ -3,19 +3,15 @@ from sqlalchemy.orm import sessionmaker
 
 
 class DBConnectionHandler:
-    """Sqlalchemy database connection"""
+    """sqlalchemy"""
 
     def __init__(self):
         self.__connection_string = "sqlite:///storage.db"
         self.session = None
 
     def get_engine(self):
-        """Return connection Engine
-        :parram - None
-        :return - engine connection to Database
-        """
-        engine = create_engine(self.__connection_string)
-        return engine
+        """return connection engine"""
+        return create_engine(self.__connection_string)
 
     def __enter__(self):
         engine = create_engine(self.__connection_string)
@@ -24,4 +20,4 @@ class DBConnectionHandler:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.session.close()  # pylint: disable=no-member
+        self.session.close()

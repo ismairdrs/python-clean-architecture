@@ -121,3 +121,4 @@ database/
 
 *.db
 .pytest_cache
+storage.db
