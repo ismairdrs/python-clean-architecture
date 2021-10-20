@@ -15,3 +15,12 @@ class Users(Base):
 
     def __repr__(self) -> str:
         return f"User [name={self.name}]"
+
+    def __eq__(self, other):
+        return all(
+            [
+                self.id == other.id,
+                self.name == other.name,
+                self.password == other.password,
+            ]
+        )
