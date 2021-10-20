@@ -32,7 +32,7 @@ class Pets(Base):
             [
                 self.id == other.id,
                 self.name == other.name,
-                self.specie == other.specie.value,
+                self.specie == other.specie,
                 self.age == other.age,
                 self.user_id == other.user_id,
             ]
