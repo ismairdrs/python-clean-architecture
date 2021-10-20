@@ -3,8 +3,8 @@ from sqlalchemy.orm import relationship
 from src.infra.config import Base
 
 
-class User(Base):
-    """User Entity"""
+class Users(Base):
+    """database users"""
 
     __tablename__ = "users"
 
@@ -13,14 +13,5 @@ class User(Base):
     password = Column(String, nullable=False)
     id_pet = relationship("Pets")
 
-    def __rep__(self):
+    def __repr__(self) -> str:
         return f"User [name={self.name}]"
-
-    def __eq__(self, other):
-        return all(
-            [
-                self.id == other.id,
-                self.name == other.name,
-                self.password == other.password,
-            ]
-        )
