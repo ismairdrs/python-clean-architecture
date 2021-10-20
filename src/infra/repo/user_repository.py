@@ -1,11 +1,12 @@
+from typing import List
+from sqlalchemy.exc import NoResultFound
 from src.domain.models import Users
 from src.infra.config import DBConnectionHandler
 from src.entities import User as UsersModel
-from typing import List
-from sqlalchemy.exc import NoResultFound
+from src.data.interfaces import UserRepositoryInterface
 
 
-class UserRepository:
+class UserRepository(UserRepositoryInterface):
     """Class to manage User Repository"""
 
     @classmethod
