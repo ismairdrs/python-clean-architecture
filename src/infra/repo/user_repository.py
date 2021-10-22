@@ -2,9 +2,10 @@ from typing import List
 from src.infra.config import DBConnectionHandler
 from src.infra.entities import Users as UsersModel
 from src.domain.models import Users
+from src.data.interfaces import UserRepositoryInterface
 
 
-class UserRepository:
+class UserRepository(UserRepositoryInterface):
     """User repository"""
 
     @classmethod
