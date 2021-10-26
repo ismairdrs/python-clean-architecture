@@ -14,6 +14,7 @@ class FindUserSpy:
 
     def by_id(self, user_id: int) -> Dict[bool, List[Users]]:
         self.by_id_param["user_id"] = user_id
+        response = None
         validate_entry = isinstance(user_id, int)
 
         if validate_entry:
@@ -22,7 +23,7 @@ class FindUserSpy:
 
     def by_name(self, name: str) -> Dict[bool, List[Users]]:
         self.by_name_param["name"] = name
-
+        response = None
         validate_entry = isinstance(name, str)
         if validate_entry:
             response = [mock_users()]
@@ -31,6 +32,7 @@ class FindUserSpy:
     def by_id_and_name(self, user_id: int, name: str) -> Dict[bool, List[Users]]:
         self.by_id_and_name_param["user_id"] = user_id
         self.by_id_and_name_param["name"] = name
+        response = None
 
         validate_entry = isinstance(user_id, int) and isinstance(name, str)
 
