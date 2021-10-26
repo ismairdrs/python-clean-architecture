@@ -8,7 +8,7 @@ from .find_user_controller import FindUserController
 faker = Faker()
 
 
-def test_hadle():
+def test_handle():
     find_user_use_case = FindUserSpy(UserRepositorySpy())
     find_user_controller = FindUserController(find_user_use_case)
 
