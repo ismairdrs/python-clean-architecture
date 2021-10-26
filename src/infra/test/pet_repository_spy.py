@@ -8,10 +8,7 @@ class PetsRepositorySpy:
         self.insert_pet_params = {}
         self.select_pet_params = {}
 
-    def insert_pet(
-        self, pet_id: int, name: str, specie: str, age: int, user_id: int
-    ) -> Pets:
-        self.insert_pet_params["pet_id"] = pet_id
+    def insert_pet(self, name: str, specie: str, age: int, user_id: int) -> Pets:
         self.insert_pet_params["name"] = name
         self.insert_pet_params["specie"] = specie
         self.insert_pet_params["age"] = age
