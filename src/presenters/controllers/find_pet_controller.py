@@ -23,6 +23,6 @@ class FindPetController:
             elif user_id:
                 response = self.find_pet_use_case.by_user_id(user_id=user_id)
             else:
-                return FactoryHttpError(HttpErrors.error_422())
+                return FactoryHttpError(HttpErrors.error_422()).run()
             return HttpResponse(status_code=200, body=response["data"])
-        return FactoryHttpError(HttpErrors.error_400())
+        return FactoryHttpError(HttpErrors.error_400()).run()
