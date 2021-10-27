@@ -1,7 +1,7 @@
 from typing import Type
 from src.domain.use_cases import FindUser
 from src.presenters.helpers import HttpRequest, HttpResponse
-from src.presenters.erros import HttpErrors
+from src.presenters.erros import HttpErrors, FactoryHttpError
 
 
 class FindUserController:
@@ -27,16 +27,8 @@ class FindUserController:
                 response = self.find_user_use_case.by_name(name=user_name)
 
             else:
-                http_error = HttpErrors.error_422()
-                return HttpResponse(
-                    status_code=http_error["status_code"],
-                    body=http_error["body"],
-                )
+                return FactoryHttpError(HttpErrors.error_422()).run()
+
             return HttpResponse(status_code=200, body=response["data"])
 
-        # If no query in http_request
-        http_error = HttpErrors.error_400()
-        return HttpResponse(
-            status_code=http_error["status_code"],
-            body=http_error["body"],
-        )
+        return FactoryHttpError(HttpErrors.error_400()).run()
