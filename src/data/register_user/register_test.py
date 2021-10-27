@@ -20,8 +20,8 @@ def test_register():
     assert user_repo.insert_user_params["name"] == attributes["name"]
     assert user_repo.insert_user_params["password"] == attributes["password"]
 
-    assert response["Success"] is True
-    assert response["Data"]
+    assert response["success"] is True
+    assert response["data"]
 
 
 def test_register_fail():
@@ -38,5 +38,5 @@ def test_register_fail():
 
     assert user_repo.insert_user_params == {}
 
-    assert response["Success"] is False
-    assert response["Data"] is None
+    assert response["success"] is False
+    assert response["data"] is None
