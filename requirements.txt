@@ -8,11 +8,16 @@ distlib==0.3.3
 Faker==9.0.0
 filelock==3.3.0
 flake8==3.9.2
+Flask==2.0.2
+Flask-Cors==3.0.10
 greenlet==1.1.2
 identify==2.3.0
 iniconfig==1.1.1
 isort==5.9.3
+itsdangerous==2.0.1
+Jinja2==3.0.2
 lazy-object-proxy==1.6.0
+MarkupSafe==2.0.1
 mccabe==0.6.1
 mypy-extensions==0.4.3
 nodeenv==1.6.0
@@ -38,4 +43,5 @@ tomli==1.2.1
 tryceratops==0.6.0
 typing-extensions==3.10.0.2
 virtualenv==20.8.1
+Werkzeug==2.0.2
 wrapt==1.12.1
