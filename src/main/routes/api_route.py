@@ -49,7 +49,7 @@ def find_pet():
     response = flask_adapter(request=request, api_route=find_pet_composer())
     message = {}
 
-    if response.status_code > 399:
+    if response.status_code > 399 or response.body["data"] == []:
         return jsonify(response.body), response.status_code
 
     message = [
@@ -72,7 +72,7 @@ def find_users():
     message = {}
     response = flask_adapter(request=request, api_route=find_user_composer())
 
-    if response.status_code > 399:
+    if response.status_code > 399 or response.body["data"] == []:
         return jsonify(response.body), response.status_code
 
     message = [
