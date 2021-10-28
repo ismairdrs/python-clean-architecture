@@ -1,5 +1,5 @@
 from typing import Type
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, NoResultFound
 from src.main.interface import RouteInterface as Route
 from src.main.validations import FindValidations
 from src.presenters.helpers import HttpRequest
@@ -20,6 +20,8 @@ def flask_adapter(request: any, api_route: Type[Route]) -> any:
         http_response = api_route.route(http_request)
     except IntegrityError:
         return FactoryHttpError(HttpErrors.error_409()).run()
+    except NoResultFound:
+        return FactoryHttpError(HttpErrors.error_400_no_result_found()).run()
     except Exception as exc:  # pylint: disable=broad-except
         print(exc)
         return FactoryHttpError(HttpErrors.error_500()).run()
