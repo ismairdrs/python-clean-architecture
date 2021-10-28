@@ -65,3 +65,23 @@ def find_pet():
     ]
 
     return jsonify({"data": message}), response.status_code
+
+
+@api_routes_bp.route("/api/users/", methods=["GET"])
+def find_users():
+    message = {}
+    response = flask_adapter(request=request, api_route=find_user_composer())
+
+    if response.status_code > 399:
+        return jsonify(response.body), response.status_code
+
+    message = [
+        {
+            "type": "users",
+            "id": element.id,
+            "attributest": {"name": element.name},
+        }
+        for element in response.body
+    ]
+
+    return jsonify({"data": message}), response.status_code
