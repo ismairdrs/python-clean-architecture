@@ -1,5 +1,10 @@
 from flask import Blueprint, jsonify, request
-from src.main.composer import register_user_composer, register_pet_composer
+from src.main.composer import (
+    register_user_composer,
+    register_pet_composer,
+    find_user_composer,
+    find_pet_composer,
+)
 from src.main.adapter import flask_adapter
 from src.presenters.erros import HttpErrors, FactoryHttpError
 
@@ -21,6 +26,29 @@ def register_user():
 def register_pet():
     message = {}
     response = flask_adapter(request=request, api_route=register_pet_composer())
+
+    if response.status_code > 399:
+        return jsonify(response.body), response.status_code
+
+    message = (
+        {
+            "Type": "pets",
+            "id": response.body.id,
+            "attributes": {
+                "name": response.body.name,
+                "specie": response.body.specie,
+                "age": response.body.age,
+                "owner": response.body.user_id,
+            },
+        },
+    )
+    return jsonify({"data": message}), response.status_code
+
+
+@api_routes_bp.route("/api/pets/", methods=["GET"])
+def find_pet():
+    message = {}
+    response = flask_adapter(request=request, api_route=find_pet_composer())
 
     if response.status_code > 399:
         return jsonify(response.body), response.status_code
