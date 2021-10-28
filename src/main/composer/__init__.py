@@ -1,1 +1,2 @@
 from .register_user_composite import register_user_composer
+from .register_pet_composite import register_pet_composer
