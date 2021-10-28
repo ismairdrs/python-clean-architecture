@@ -10,10 +10,6 @@ repos:
     hooks:
     - id: flake8
       stages: [commit]
--   repo: https://github.com/guilatrova/tryceratops
-    rev: v0.6.0
-    hooks:
-      - id: tryceratops
 -   repo: local
     hooks:
     - id: pytest

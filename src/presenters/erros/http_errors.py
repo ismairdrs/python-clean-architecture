@@ -19,6 +19,10 @@ class HttpErrors:
     def error_500():
         return {"status_code": 500, "body": {"error": "Internal Server Error"}}
 
+    @staticmethod
+    def error_400_no_result_found():
+        return {"status_code": 400, "body": {"error": "No result found"}}
+
 
 class FactoryHttpError:
     def __init__(self, error: Type[HttpErrors]):
