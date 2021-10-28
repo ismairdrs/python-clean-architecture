@@ -6,7 +6,6 @@ from src.main.composer import (
     find_pet_composer,
 )
 from src.main.adapter import flask_adapter
-from src.presenters.erros import HttpErrors, FactoryHttpError
 
 api_routes_bp = Blueprint("api_routes", __name__)
 
@@ -47,22 +46,22 @@ def register_pet():
 
 @api_routes_bp.route("/api/pets/", methods=["GET"])
 def find_pet():
-    message = {}
     response = flask_adapter(request=request, api_route=find_pet_composer())
+    message = {}
 
     if response.status_code > 399:
         return jsonify(response.body), response.status_code
 
-    message = (
+    message = [
         {
-            "Type": "pets",
-            "id": response.body.id,
-            "attributes": {
-                "name": response.body.name,
-                "specie": response.body.specie,
-                "age": response.body.age,
-                "owner": response.body.user_id,
-            },
-        },
-    )
+            "type": "pets",
+            "id": element.id,
+            "name": element.name,
+            "specie": element.specie.value,
+            "age": element.age,
+            "relationships": {"owner": {"type": "users", "id": element.user_id}},
+        }
+        for element in response.body
+    ]
+
     return jsonify({"data": message}), response.status_code
