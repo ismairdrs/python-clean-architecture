@@ -11,6 +11,10 @@ class HttpErrors:
     def error_400():
         return {"status_code": 400, "body": {"error": "Bad Request"}}
 
+    @staticmethod
+    def error_409():
+        return {"status_code": 409, "body": {"error": "Conflict"}}
+
 
 class FactoryHttpError:
     def __init__(self, error: Type[HttpErrors]):
