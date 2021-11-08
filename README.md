@@ -1,6 +1,8 @@
-```bash
+
 Implementação de projeto em python utilizando a Clean Architecture 
-```
+
+- ⚡ Playlist dos vídeos explicando no canal [Programador Lhama](https://www.youtube.com/watch?v=YAMgtR3aCuY&list=PLAgbpJQADBGJmTxeRZKWvdJAoJj8_x3si)
+
 ```bash
 ├── src
 │   ├── data
